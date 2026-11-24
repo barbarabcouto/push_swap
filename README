@@ -1,0 +1,60 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    README                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bdavid-b <bdavid-b@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/01/23 20:15:31 by bdavid-b          #+#    #+#              #
+#    Updated: 2026/01/23 20:27:59 by bdavid-b         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+*This project has been created as part of the 42 curriculum by bdavid-b.*
+
+# Push_Swap
+
+Project from the 42 curriculum.
+
+## Description
+
+Push_Swap sorts integers (positive and negative) in ascending order using two stacks (a and b) and a limited set of operations.  
+The goal is to sort the numbers using the fewest possible moves, which are printed to standard output.
+
+## Operations
+
+sa / sb - swap the first two elements  
+ss - sa and sb at the same time  
+pa / pb - push the top element between stacks  
+ra / rb - rotate upwards  
+rr - ra and rb together  
+rra / rrb - reverse rotate  
+
+## Compilation
+
+make
+
+## Usage
+
+./push_swap 3 2 1  
+./push_swap "3 2 1"
+
+## Tests
+
+Test with 500 numbers and checker:
+
+ARG="$(shuf -i 0-499 | tr '\n' ' ')"  
+./push_swap $ARG | ./checker_linux $ARG
+
+Test with Valgrind:
+
+ARG="$(shuf -i 0-499 | tr '\n' ' ')"  
+valgrind ./push_swap $ARG | ./checker_linux $ARG
+
+Count moves:
+
+ARG="$(shuf -i 0-499 | tr '\n' ' ')"  
+./push_swap $ARG | wc -l
+
+## Algorithm
+
+Uses the Turk algorithm, chosen for being simpler and more readable than bit-based approaches.
